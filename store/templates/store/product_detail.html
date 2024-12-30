@@ -1,0 +1,23 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="box-element">
+        <a class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Continue Shopping</a>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <img class="thumbnail" src="{{ product.imageURL }}">
+        </div>
+        <div class="col-lg-6">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description | default:'' }}</p>
+            <h4>${{ product.price|floatformat:2 }}</h4>
+            <button data-product="{{ product.id }}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+            <hr>
+            <a style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
